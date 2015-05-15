@@ -16,7 +16,8 @@
     "tape": "^4.0.0"
   },
   "scripts": {
-    "test": "jshint index.js test/test.js && node test/test.js | faucet"
+    "test": "jshint index.js test/test.js && node test/test.js | faucet",
+    "bench": "node bench/bench.js"
   },
   "keywords": [
     "math",

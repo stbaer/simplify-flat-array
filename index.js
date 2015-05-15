@@ -28,11 +28,12 @@
         var x = p1[0],
             y = p1[1],
             dx = p2[0] - x,
-            dy = p2[1] - y;
+            dy = p2[1] - y,
+            t;
 
         if (dx !== 0 || dy !== 0) {
 
-            var t = ((p[0] - x) * dx + (p[1] - y) * dy) / (dx * dx + dy * dy);
+            t = ((p[0] - x) * dx + (p[1] - y) * dy) / (dx * dx + dy * dy);
 
             if (t > 1) {
                 x = p2[0];
@@ -90,11 +91,13 @@
      * @param simplified
      */
     function simplifyDPStep(points, first, last, sqTolerance, simplified) {
+
         var maxSqDist = sqTolerance,
+            i = first + 2,
             sqDist,
             index;
 
-        for (var i = first + 2; i < last; i+=2) {
+        for (i; i < last; i+=2) {
             sqDist = getSqSegDist([points[i], points[i+1]], [points[first], points[first+1]], [points[last], points[last+1]]);
 
             if (sqDist > maxSqDist) {
@@ -118,9 +121,10 @@
      * @returns {*[]}
      */
     function simplifyDouglasPeucker(points, sqTolerance) {
-        var last = points.length - 2;
 
+        var last = points.length - 2;
         var simplified = [points[0], points[1]];
+
         simplifyDPStep(points, 0, last, sqTolerance, simplified);
         simplified.push(points[last], points[last+1]);
 
@@ -133,7 +137,7 @@
      * @param points
      * @param tolerance
      * @param highestQuality
-     * @returns {*}
+     * @returns {number[]}
      */
     function simplify(points, tolerance, highestQuality) {
 

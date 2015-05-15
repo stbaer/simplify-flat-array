@@ -18,6 +18,8 @@ Like simplify-js, except for the points format. See [simplify-js demo/doku](http
 
 - *highQuality* [Boolean] (optional, false by default) - includes distance-based processing if true
 
+The return value is also a flat number array.
+
 ### Test
 
 `npm run test`
