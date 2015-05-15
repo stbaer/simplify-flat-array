@@ -1,0 +1,49 @@
+{
+  "name": "simplify-flat-array",
+  "version": "1.0.0",
+  "description": "simplify 2D polyline",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Steffen Bär",
+    "url": "https://github.com/stbaer"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "faucet": "0.0.1",
+    "jshint": "^2.7.0",
+    "tape": "^4.0.0"
+  },
+  "scripts": {
+    "test": "jshint index.js test/test.js && node test/test.js | faucet"
+  },
+  "keywords": [
+    "math",
+    "polyline",
+    "simplify",
+    "2d",
+    "path",
+    "poly",
+    "line",
+    "douglas",
+    "radial",
+    "distance",
+    "redundant",
+    "duplicate",
+    "points"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stbaer/simplify-flat-array.git"
+  },
+  "homepage": "https://github.com/stbaer/simplify-flat-array",
+  "bugs": {
+    "url": "https://github.com/stbaer/simplify-flat-array/issues"
+  },
+  "jshintConfig": {
+    "quotmark": "single",
+    "trailing": true,
+    "unused": true
+  }
+}
