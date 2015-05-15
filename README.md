@@ -4,7 +4,7 @@
 
 ### Install
 
-npm i stbaer/simplify-flat-array
+`npm i stbaer/simplify-flat-array`
 
 ### Use
 
@@ -12,11 +12,11 @@ Like simplify-js, except for the points format. See [simplify-js demo/doku](http
 
 `simplify(points, tolerance, highQuality)`
 
-    - *points* - [Array] - [ x1, y1, x2, y2,...].
+- *points* - [Array] - [ x1, y1, x2, y2,...].
 
-    - *tolerance* - [Number] (optional, 1 by default)
+- *tolerance* - [Number] (optional, 1 by default)
 
-    - *highQuality* [Boolean] (optional, false by default) - includes distance-based processing if true
+- *highQuality* [Boolean] (optional, false by default) - includes distance-based processing if true
 
 ### Test
 
