@@ -4,7 +4,7 @@
 
 ### Install
 
-`npm i stbaer/simplify-flat-array`
+`npm i simplify-flat-array`
 
 ### Use
 
@@ -24,4 +24,4 @@ The return value is also a flat number array.
 
 `npm run test`
 
-The tests from simplify-js are included, only changed the points format
+The tests from simplify-js are included, only changed the points format.
