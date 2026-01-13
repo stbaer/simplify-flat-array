@@ -1,6 +1,6 @@
 {
   "name": "simplify-flat-array",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "simplify 2D polyline",
   "main": "index.js",
   "license": "MIT",
@@ -8,16 +8,19 @@
     "name": "Steffen Bär",
     "url": "https://github.com/stbaer"
   },
-  "dependencies": {},
   "devDependencies": {
-    "benchmark": "^1.0.0",
-    "faucet": "0.0.1",
-    "jshint": "^2.7.0",
-    "tape": "^4.0.0"
+    "@vitest/coverage-v8": "^4.0.17",
+    "benchmark": "^2.1.4",
+    "faucet": "^0.0.4",
+    "jshint": "^2.13.0",
+    "tape": "^5.9.0",
+    "vitest": "^4.0.17"
   },
   "scripts": {
-    "test": "jshint index.js test/test.js && node test/test.js | faucet",
-    "bench": "node bench/bench.js"
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "bench": "node benchmark/benchmark.js"
   },
   "keywords": [
     "math",

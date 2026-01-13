@@ -1,27 +1,71 @@
-## simplify-flat-array
+# simplify-flat-array
 
-[simplify-js](https://github.com/mourner/simplify-js) for flat number arrays ([ x1, y1, x2, y2,...]).
+[![npm version](https://img.shields.io/npm/v/simplify-flat-array.svg?style=flat-square)](https://www.npmjs.com/package/simplify-flat-array)
+[![npm downloads](https://img.shields.io/npm/dm/simplify-flat-array.svg?style=flat-square)](https://www.npmjs.com/package/simplify-flat-array)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-### Install
+**Lightweight 2D polyline simplification for flat coordinate arrays**  
+Reduces the number of points in paths while preserving shape
 
-`npm i simplify-flat-array`
+Supports two popular algorithms:
 
-### Use
+- **Douglas-Peucker** (classic, fast, good for strict geometric fidelity)
+- **Visvalingam–Whyatt** (usually smoother & more natural looking for hand-drawn/organic paths)
 
-Like simplify-js, except for the points format. See [simplify-js demo/doku](http://mourner.github.io/simplify-js/)
+## Features
 
-`simplify(points, tolerance, highQuality)`
+- Works directly with **flat arrays** `[x1,y1, x2,y2, ...]` (no need for object arrays)
+- 100% backward compatible with original v1.0.0 API
+- Optional **Visvalingam–Whyatt** mode (added in v1.1.0) – often preferred for visual quality
+- Target exact number of points (Visvalingam)
+- Optional `Float32Array` output (great for PixiJS `Line`, `Rope`, `Mesh`, `Graphics`)
+- Closed path support (polygons, zones, formations)
+- Zero dependencies (~3 KB minified)
 
-- *points* - [Array] - [ x1, y1, x2, y2,...].
+## Installation
 
-- *tolerance* - [Number] (optional, 1 by default)
+```bash
+npm install simplify-flat-array
+# or
+yarn add simplify-flat-array
+```
 
-- *highQuality* [Boolean] (optional, false by default) - includes distance-based processing if true
+## New in v1.1.0 – Visvalingam–Whyatt support
 
-The return value is also a flat number array.
+```js
+const simplify = require('simplify-flat-array');
+// or
+import simplify from 'simplify-flat-array';
 
-### Test
+// Classic Douglas-Peucker (same as old version)
+simplify(points, 2.5, true);
 
-`npm run test`
+// Visvalingam
+simplify(points, null, false, { algorithm: 'visvalingam', tolerance: 1 });
 
-The tests from simplify-js are included, only changed the points format.
+// Target specific point count
+simplify(points, null, false, { algorithm: 'visvalingam', targetPoints: 30 });
+```
+
+## API
+
+### `simplify(points, tolerance, highQuality, options)`
+
+### Options
+
+- `algorithm` (default: 'douglas-peucker')
+- `targetPoints` (Visvalingam only)
+- `useTypedArray` (default: false)
+- `closed` (default: false)
+
+### Return value
+
+Returns a flat array of coordinates `[x1,y1, x2,y2, ...]`.
+
+### Performance Notes
+
+Douglas-Peucker is significantly faster for large paths.  
+Visvalingam–Whyatt provides better visual quality but can be 3–10× slower in the current implementation when reducing to low point counts.
+
+## License
+MIT © Steffen Bär
